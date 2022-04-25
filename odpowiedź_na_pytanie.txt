@@ -1,0 +1,10 @@
+W przypadku występowania tylko jednej stacji roboczej i jednego robota, 
+problem sprowadza się do znalezienia najkrótszej ścieżki (ścieżek) od robota do wszystkich egzemplarzy 
+produktu z zadania dla bota i znalezienia najkrótszej ścieżki od stacji do produktów, a następnie połączenie 
+ich w jedną ścieżkę. Wprowadzając więcej stacji odbiorczych, należałoby dodatkowo dla każdej stacji wyznaczyć 
+najkrótszą ścieżkę do każdego produktu, a potem wybrać najlepszą kombinację (bot, produkt, stacja) czyli taką, 
+że sumaryczna ścieżka od bota do produktu + załadunek i do stacji byłaby najkrótsza (w sensie czasowym). 
+Można więc zastosować algorytm znajdowania najkrótszej ścieżki między wszystkimi parami w grafie 
+(w domyśle para stacja – produkt), czyli algorytm Floyd–Warshall’a o złożoności O(V^3). 
+Alternatywnie można zastosować algorytm Dijkstry k+1 razy, gdzie k to liczba stacji odbiorczych 
+(plus jeden dla robota). Takie podejście miałoby złożoność O((k+1) * (V + E*log(V))).
